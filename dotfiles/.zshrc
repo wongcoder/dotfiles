@@ -1,3 +1,10 @@
+# Scrypted Service has been installed. You can start, stop, enable, or disable Scrypted with:
+#   launchctl load ~/Library/LaunchAgents/app.scrypted.server.plist
+#   launchctl unload ~/Library/LaunchAgents/app.scrypted.server.plist
+#   launchctl enable ~/Library/LaunchAgents/app.scrypted.server.plist
+#   launchctl disable ~/Library/LaunchAgents/app.scrypted.server.plist
+DISABLE_AUTO_UPDATE="true"
+
 # If you come from bash you might have to change your $PATH.
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -110,4 +117,14 @@ alias cdrepo="cd ~/Documents/Repositories"
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/emulator
 export PATH=$PATH:$ANDROID_SDK_ROOT/platform-tools
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
+javahome() {
+  unset JAVA_HOME 
+  export JAVA_HOME=$(/usr/libexec/java_home -v "$1");
+  java -version
+}
+alias j1.8='javahome 1.8'
+alias j11='javahome 11'
+alias j17='javahome 17'
+export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
